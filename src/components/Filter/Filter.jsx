@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addFilter } from 'redux/filter/filterSlice';
 import css from './Filter.module.css';
 
-export function Filter({isFilter }) {
+export function Filter({ isFilter }) {
+  const dispatch = useDispatch();
   const changeInput = e => {
-  	 isFilter(e.currentTarget.value.trim())
+    const wordFilter = e.currentTarget.value.trim();
+    dispatch(addFilter(wordFilter));
   };
   return (
     <div className={css.filter}>
@@ -12,6 +15,4 @@ export function Filter({isFilter }) {
     </div>
   );
 }
-Filter.propTypes = {
-  isFilter: PropTypes.func.isRequired,
-};
+

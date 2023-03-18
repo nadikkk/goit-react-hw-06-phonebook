@@ -1,0 +1,1 @@
+export const selectorContact = state => state.contact.contacts;
